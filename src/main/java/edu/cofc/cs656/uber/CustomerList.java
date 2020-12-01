@@ -1,12 +1,14 @@
 package edu.cofc.cs656.uber;
 
+import java.util.ArrayList;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 import edu.cofc.cs656.uber.Customer.CustomerBuilder;
 
 public class CustomerList {
-  private static final CopyOnWriteArrayList<Customer> cList = new CopyOnWriteArrayList<>();
+  //private static final CopyOnWriteArrayList<Customer> cList = new CopyOnWriteArrayList<>();
+	private static final ArrayList<Customer> cList = new ArrayList<>();
 
   static {
     // Create list of customers
@@ -69,12 +71,12 @@ public class CustomerList {
   
   private CustomerList(){}
   
-  public static CopyOnWriteArrayList<Customer> getInstance(){
+  public static ArrayList<Customer> getInstance(){
     return cList;
   }
   
   public static void testList(){
-    CopyOnWriteArrayList<Customer> list = CustomerList.getInstance();
+    ArrayList<Customer> list = CustomerList.getInstance();
     list.stream()
         .forEach(i -> System.out.println(i));
     String cString = 
