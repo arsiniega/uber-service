@@ -11,7 +11,7 @@ public class Driver extends User{
 		super(userID, isSignedUp, userProfile);
 		this.isVerifiedDriver = isVerifiedDriver;
 		this.driverInformation = driverInformation;
-		System.out.println("You've created a Driver");
+		//System.out.println("You've created a Driver");
 	}
 
 

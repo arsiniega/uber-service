@@ -3,6 +3,9 @@ package edu.cofc.cs656.uber;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import model.edu.cofc.cs656.models.AutoInfo;
 import model.edu.cofc.cs656.models.Car;
 import model.edu.cofc.cs656.models.Driver;
@@ -42,27 +45,14 @@ public class UberUserList {
         Profile pro9 = new Profile("Admin", "Istrator", "(999) 999-9999", 5.0);
         Profile pro10 = new Profile("Test", "User", "(231) 767-0480", 1.0);
         
-        // dummy cars
-        Car car1 = new Car("FORD", "F-150", "2009", "VIN1021");
-        Car car2 = new Car("MAZDA", "CX-9", "2008", "VIN0099");
-        Car car3 = new Car("TOYOTA", "TUNDRA", "1998", "VIN1199");
-        
-        // we will use these two automobile registrations for expediency 
-        AutoInfo reg1 = new AutoInfo("GEICO123", "DLSC100542819", car1);
-        AutoInfo reg2 = new AutoInfo("STATEFARM123", "DLSC100552312", car2);
-        AutoInfo reg3 = new AutoInfo("GENERAL4478", "DLSC111342789", car3);
-        
         Renter rent1 = new Renter(userid++, notSignedUp, pro1);
         Renter rent2 = new Renter(userid++, notSignedUp, pro2);
         Renter rent3 = new Renter(userid++, notSignedUp, pro3);
         Renter rent4 = new Renter(userid++, notSignedUp, pro4);
         Renter rent5 = new Renter(userid++, notSignedUp, pro5);
-        Renter rent6 = new Renter(userid++, signedUp, pro9);
-        Renter rent7 = new Renter(userid++, signedUp, pro10);
+        Renter rent6 = new Renter(userid++, signedUp, pro6);
+        Renter rent7 = new Renter(userid++, signedUp, pro7);
 
-        Driver drive1 = new Driver(userid++, notSignedUp, pro6, verifiedDriver, reg1);
-        Driver drive2 = new Driver(userid++, notSignedUp, pro7, verifiedDriver, reg2);
-        Driver drive3 = new Driver(userid++, notSignedUp, pro8, notVerifiedDriver, reg3);
         
         uberList.add(rent1);
         uberList.add(rent2);
@@ -70,11 +60,7 @@ public class UberUserList {
         uberList.add(rent4);
         uberList.add(rent5);
         uberList.add(rent6);
-        uberList.add(rent7);
-        uberList.add(drive1);
-        uberList.add(drive2);
-        uberList.add(drive3);
-        
+        uberList.add(rent7);        
 	}
 	
 	private UberUserList() {}
@@ -83,15 +69,28 @@ public class UberUserList {
 		return uberList;
 	}
 	
+	public int getUserid() {
+		return userid;
+	}
+	
 	public static void testList() {
 		ArrayList<User> list = UberUserList.getInstance();
-	    list.stream()
-        .forEach(i -> System.out.println(i));
+	    
+		//Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Gson gson = new Gson();
+		System.out.println("1st attempt:\n");
+		System.out.println(gson.toJson(list));
+
+		System.out.println("2nd attempt:\n");
+		list.stream()
+        .forEach(i -> System.out.println(gson.toJson(i)));
+	    
+		System.out.println("3rd attempt:\n");
 	    String cString = 
         list.stream()
         .map( c -> c.toString())
         .collect(Collectors.joining("\n"));
-    //System.out.println(cString);
+        System.out.println(cString);
   }
     
   public static void main(String[] args) {

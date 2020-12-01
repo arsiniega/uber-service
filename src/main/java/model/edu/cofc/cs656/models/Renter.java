@@ -7,7 +7,7 @@ public class Renter extends User{
 	public Renter(int userID, boolean isSignedUp, Profile userProfile) {
 		super(userID, isSignedUp, userProfile);
 		this.renterPaymentValidated = false;
-		System.out.println("You've created a Renter");
+		//System.out.println("You've created a Renter");
 	}
 	
 
