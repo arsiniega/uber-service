@@ -14,56 +14,46 @@ public class CustomerList {
     // Create list of customers
     cList.add(
         new Customer.CustomerBuilder().id()
-        .firstName("George")
-        .lastName("Washington")
-        .email("gwash@example.com")
-        .city("Mt Vernon")
-        .state("VA")
-        .birthday("1732-02-23")
+        .firstName("Alan")
+        .lastName("Smith")
+        .cellphone("(843) 428-0091")
+        .rating("4.5")
         .build()
     );
 
     cList.add(
         new Customer.CustomerBuilder().id()
-        .firstName("John")
-        .lastName("Adams")
-        .email("jadams@example.com")
-        .city("Braintree")
-        .state("MA")
-        .birthday("1735-10-30")
+        .firstName("Bert")
+        .lastName("Johnson")
+        .cellphone("(994) 711-8516")
+        .rating("4.2")
         .build()
     );
 
     cList.add(
         new Customer.CustomerBuilder().id()
-        .firstName("Thomas")
-        .lastName("Jefferson")
-        .email("tjeff@example.com")
-        .city("CharlottesVille")
-        .state("VA")
-        .birthday("1743-04-13")
+        .firstName("Earl")
+        .lastName("Brown")
+        .cellphone("(704) 224-3467")
+        .rating("4.0")
         .build()
     );
 
     cList.add(
         new Customer.CustomerBuilder().id()
-        .firstName("James")
-        .lastName("Madison")
-        .email("jmad@example.com")
-        .city("Orange")
-        .state("VA")
-        .birthday("1751-03-16")
+        .firstName("Cassie")
+        .lastName("Garcia")
+        .cellphone("(575) 753-4424")
+        .rating("4.1")
         .build()
     );
 
     cList.add(
         new Customer.CustomerBuilder().id()
-        .firstName("James")
-        .lastName("Monroe")
-        .email("jmo@example.com")
-        .city("New York")
-        .state("NY")
-        .birthday("1758-04-28")
+        .firstName("Dalila")
+        .lastName("Miller")
+        .cellphone("(599) 392-8749")
+        .rating("3.5")
         .build()
     );
 

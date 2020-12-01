@@ -6,20 +6,16 @@ public class Customer {
   private final long id;
   private final String firstName;
   private final String lastName;
-  private final String email;
-  private final String city;
-  private final String state;
-  private final String birthday;
+  private final String cellphone;
+  private final String rating;
   private static final AtomicLong counter = new AtomicLong(100);
  
   private Customer(CustomerBuilder builder){
     this.id = builder.id;
     this.firstName = builder.firstName;
     this.lastName = builder.lastName;
-    this.email = builder.email;
-    this.city = builder.city;
-    this.state = builder.state;
-    this.birthday = builder.birthday;
+    this.cellphone = builder.cellphone;
+    this.rating = builder.rating;
   }
   
   public Customer(){
@@ -27,29 +23,23 @@ public class Customer {
       this.id = cust.getId();
       this.firstName = cust.getFirstName();
       this.lastName = cust.getLastName();
-      this.email = cust.getEmail();
-      this.city = cust.getCity();
-      this.state = cust.getState();
-      this.birthday = cust.getBirthday();
+      this.cellphone = cust.getCellphone();
+      this.rating = cust.getRating();
   }
   
   public Customer(long id, String firstName, String lastName,
-      String email, String city, String state, String birthday){
+      String celly, String rat){
       Customer cust = new Customer.CustomerBuilder().id()
            .firstName(firstName)
            .lastName(lastName)
-           .email(email)
-           .city(city)
-           .state(state)
-           .birthday(birthday)
+           .cellphone(celly)
+           .rating(rat)
            .build();
       this.id = cust.getId();
       this.firstName = cust.getFirstName();
       this.lastName = cust.getLastName();
-      this.email = cust.getEmail();
-      this.city = cust.getCity();
-      this.state = cust.getState();
-      this.birthday = cust.getBirthday();
+      this.cellphone = cust.getCellphone();
+      this.rating = cust.getRating();
   }
   
   public long getId(){
@@ -64,41 +54,30 @@ public class Customer {
     return this.lastName;
   }
   
-  public String getEmail(){
-    return this.email;
+  public String getCellphone(){
+    return this.cellphone;
   }
 
-  public String getCity() {
-    return this.city;
+  public String getRating() {
+    return this.rating;
   }
 
-  public String getState() {
-    return this.state;
-  } 
-  
-  public String getBirthday(){
-    return this.birthday;
-  }
   
   @Override
   public String toString(){
     return "ID: " + id 
         + " First: " + firstName
         + " Last: " + lastName + "\n"
-        + "EMail: " + email + "\n"
-        + "City: " + city
-        + " State: " + state
-        + " Birthday " + birthday;
+        + "Cellphone: " + cellphone + "\n"
+        + "Rating: " + rating;
   }  
   
   public static class CustomerBuilder{
     private long id;
     private String firstName = "";
     private String lastName = "";
-    private String email = "";
-    private String city = "";
-    private String state = "";
-    private String birthday = "";
+    private String cellphone = "";
+    private String rating = "";
     
     public CustomerBuilder id(){
       this.id = Customer.counter.getAndIncrement();
@@ -120,26 +99,16 @@ public class Customer {
       return this;
     }
     
-    public CustomerBuilder email(String email){
-      this.email = email;
+    public CustomerBuilder cellphone(String cellphone){
+      this.cellphone = cellphone;
       return this;
     }
     
-    public CustomerBuilder city(String city){
-      this.city = city;
+    public CustomerBuilder rating(String rating){
+      this.rating = rating;
       return this;
     }
-    
-    public CustomerBuilder state(String state){
-      this.state = state;
-      return this;
-    }
-    
-    public CustomerBuilder birthday(String birthday){
-      this.birthday = birthday;
-      return this;
-    }
-    
+        
     public Customer build(){
       return new Customer(this);
     }
